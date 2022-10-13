@@ -1,6 +1,6 @@
 FROM gitpod/workspace-base:latest
 
-RUN echo "CI version from base"
+RUN echo "CI custom build from base 221013"
 
 ### NodeJS ###
 USER gitpod
@@ -24,8 +24,8 @@ RUN curl -fsSL https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-ins
         echo 'eval "$(pyenv init -)"'; \
         echo 'eval "$(pyenv virtualenv-init -)"'; } >> /home/gitpod/.bashrc.d/60-python \
     && pyenv update \
-    && pyenv install 3.8.11 \
-    && pyenv global 3.8.11 \
+    && pyenv install 3.10.8 \
+    && pyenv global 3.10.8 \
     && python3 -m pip install --no-cache-dir --upgrade pip \
     && python3 -m pip install --no-cache-dir --upgrade \
         setuptools wheel virtualenv pipenv pylint rope flake8 \
@@ -44,15 +44,14 @@ RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 20691eec35
     sudo apt-get install -y mongodb-org-shell  && \
     sudo apt-get install -y links  && \
     sudo apt-get clean -y && \
-    sudo rm -rf /var/cache/apt/* /var/lib/apt/lists/* /tmp/* && \
-    sudo chown -R gitpod:gitpod /home/gitpod/.cache/heroku/
+    sudo rm -rf /var/cache/apt/* /var/lib/apt/lists/* /tmp/*
 
 # Setup PostgreSQL
 
 RUN sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list' && \
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8 && \
     sudo apt-get update -y && \
-    sudo apt-get install -y postgresql-12
+    sudo apt-get install -y postgresql-13
 
 ENV PGDATA="/workspace/.pgsql/data"
 
