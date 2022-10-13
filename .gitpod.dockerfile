@@ -62,7 +62,7 @@ RUN mkdir -p ~/.pg_ctl/bin ~/.pg_ctl/sockets \
 
 ENV PGDATABASE="postgres"
 
-ENV PATH="/usr/lib/postgresql/12/bin:/home/gitpod/.nvm/versions/node/v${NODE_VERSION}/bin:$HOME/.pg_ctl/bin:$PATH"
+ENV PATH="/usr/lib/postgresql/13/bin:/home/gitpod/.nvm/versions/node/v${NODE_VERSION}/bin:$HOME/.pg_ctl/bin:$PATH"
 
 # Add aliases
 
