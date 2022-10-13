@@ -60,7 +60,6 @@ RUN mkdir -p ~/.pg_ctl/bin ~/.pg_ctl/sockets \
     && echo '#!/bin/bash\n[ ! -d $PGDATA ] && mkdir -p $PGDATA && initdb --auth=trust -D $PGDATA\npg_ctl -D $PGDATA -l ~/.pg_ctl/log -o "-k ~/.pg_ctl/sockets" start\n' > ~/.pg_ctl/bin/pg_start \
     && echo '#!/bin/bash\npg_ctl -D $PGDATA -l ~/.pg_ctl/log -o "-k ~/.pg_ctl/sockets" stop\n' > ~/.pg_ctl/bin/pg_stop \
     && chmod +x ~/.pg_ctl/bin/*
-    && cp $GITPOD_REPO_ROOT/.vscode/pg_hba.conf /workspace/.pgsql/data/
 
 ENV PGDATABASE="postgres"
 
@@ -74,6 +73,7 @@ RUN echo 'alias run="python3 $GITPOD_REPO_ROOT/manage.py runserver 0.0.0.0:8000"
     echo 'alias arctictern="python3 $GITPOD_REPO_ROOT/.vscode/arctictern.py"' >> ~/.bashrc && \
     echo 'alias font_fix="python3 $GITPOD_REPO_ROOT/.vscode/font_fix.py"' >> ~/.bashrc && \
     echo 'alias set_pg="export PGHOSTADDR=127.0.0.1"' >> ~/.bashrc && \
+    echo 'alias unset_pg="unset PGHOSTADDR"' >> ~/.bashrc && \
     echo 'alias mongosh=mongo' >> ~/.bashrc && \
     echo 'alias make_url="python3 $GITPOD_REPO_ROOT/.vscode/make_url.py "' >> ~/.bashrc && \
     echo 'FILE="$GITPOD_REPO_ROOT/.vscode/post_upgrade.sh"' >> ~/.bashrc && \

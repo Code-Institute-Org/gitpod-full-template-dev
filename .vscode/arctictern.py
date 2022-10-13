@@ -127,8 +127,8 @@ def process(file, suffix):
 
     if exists(f"{file}.tmp"):
         result = os.system(f"diff -q {file} {file}.tmp > /dev/null")
+        os.remove(f"{file}.tmp")
         if result != 0:
-            os.remove(f"{file}.tmp")
             return True
     
     return False
