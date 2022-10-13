@@ -45,6 +45,9 @@ UPGRADE_FILE_LIST = [{"filename": ".vscode/settings.json",
                       },
                      {"filename": ".vscode/make_url.py",
                       "url": ".vscode/make_url.py"
+                     },
+                     {"filename": ".vscode/arctictern.py",
+                      "url": ".vscode/arctictern.py"
                      }]
 
 FINAL_LINES = "\nexport POST_UPGRADE_RUN=1\nsource ~/.bashrc\n"
