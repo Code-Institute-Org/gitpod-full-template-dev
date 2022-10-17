@@ -46,6 +46,9 @@ UPGRADE_FILE_LIST = [{"filename": ".vscode/settings.json",
                      {"filename": ".vscode/make_url.py",
                       "url": ".vscode/make_url.py"
                      },
+                     {"filename": ".vscode/pg_hba.conf",
+                      "url": ".vscode/pg_hba.conf"
+                     },
                      {"filename": ".vscode/arctictern.py",
                       "url": ".vscode/arctictern.py"
                      }]
