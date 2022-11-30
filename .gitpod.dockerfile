@@ -1,6 +1,6 @@
 FROM gitpod/workspace-base
 
-RUN echo "CI custom build from base 221013"
+RUN echo "CI custom build from base 221130"
 
 ### NodeJS ###
 USER gitpod
@@ -36,16 +36,6 @@ ENV PYTHONUSERBASE=/workspace/.pip-modules \
     PIP_USER=yes
 ENV PATH=$PYTHONUSERBASE/bin:$PATH
 
-# Setup MongoDB
-RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 20691eec35216c63caf66ce1656408e390cfb1f5 && \
-    sudo sh -c 'echo "deb http://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list'  && \
-    sudo apt-get update -y  && \
-    sudo touch /etc/init.d/mongod  && \
-    sudo apt-get install -y mongodb-org-shell  && \
-    sudo apt-get install -y links  && \
-    sudo apt-get clean -y && \
-    sudo rm -rf /var/cache/apt/* /var/lib/apt/lists/* /tmp/*
-
 # Setup PostgreSQL
 
 RUN sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list' && \
@@ -73,7 +63,6 @@ RUN echo 'alias run="python3 $GITPOD_REPO_ROOT/manage.py runserver 0.0.0.0:8000"
     echo 'alias font_fix="python3 $GITPOD_REPO_ROOT/.vscode/font_fix.py"' >> ~/.bashrc && \
     echo 'alias set_pg="export PGHOSTADDR=127.0.0.1"' >> ~/.bashrc && \
     echo 'alias unset_pg="unset PGHOSTADDR"' >> ~/.bashrc && \
-    echo 'alias mongosh=mongo' >> ~/.bashrc && \
     echo 'alias make_url="python3 $GITPOD_REPO_ROOT/.vscode/make_url.py "' >> ~/.bashrc && \
     echo 'FILE="$GITPOD_REPO_ROOT/.vscode/post_upgrade.sh"' >> ~/.bashrc && \
     echo 'if [ -z "$POST_UPGRADE_RUN" ]; then' >> ~/.bashrc && \
